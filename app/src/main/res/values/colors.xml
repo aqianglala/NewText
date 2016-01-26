@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1B8AEB</color>
+    <color name="colorPrimaryDark">#1B8AEB</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="font_dark_gray">#6F6F74</color>
+    <color name="font_gray">#9E9E9D</color>
+    <color name="font_blue">#00CAFD</color>
+    <color name="bg_all">#EFEFF4</color>
+    <color name="view_line">#CBCACE</color>
+    <color name="font_black">#0C0410</color>
+    <color name="custom_imoocstyle">#20A0DA</color>
+
+    <color name="navpage">#FFE1E8EB</color>
+    <color name="blue_btn">#15C0EB</color>
+</resources>
