@@ -22,4 +22,6 @@
     <string name="register">register</string>
     <string name="chinese_name">脱口派</string>
     <string name="be_good_template">做你最信任的外教预约平台</string>
+
+    <string name="loading">loading...</string>
 </resources>

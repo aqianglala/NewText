@@ -25,12 +25,20 @@ public class TeacherFragmentViewmodel {
 
     private int page = 1;// 默认加载第一页
 
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
     public TeacherFragmentViewmodel(Context context, TeacherFragment teacherFragment){
         mContext=context;
         mTeacherFragment=teacherFragment;
     }
 
-    public void initData() {
+    public void loadData() {
         OkHttpUtils
                 .post()
                 .url(Urls.TEACHER_LIST)
@@ -53,6 +61,7 @@ public class TeacherFragmentViewmodel {
         @Override
         public void onError(Call call, Exception e) {
             L.i("数据加载错误");
+            mTeacherFragment.stopWait();
         }
 
         @Override
