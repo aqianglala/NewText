@@ -13,4 +13,7 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="teacher_textsize_big">18sp</dimen>
     <dimen name="teacher_textsize_nomarl">15sp</dimen>
+
+    <dimen name="card_margin_horizontal_bottom">0dp</dimen>
+    <dimen name="card_margin_top">6dp</dimen>
 </resources>
