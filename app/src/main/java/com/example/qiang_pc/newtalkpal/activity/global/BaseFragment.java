@@ -56,7 +56,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void setContentView(@LayoutRes int layoutResID) {
-        mContentView = LayoutInflater.from(mApp).inflate(layoutResID, null);
+        mContentView = LayoutInflater.from(mActivity).inflate(layoutResID, null);
     }
 
     /**

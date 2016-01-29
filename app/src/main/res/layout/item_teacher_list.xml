@@ -1,265 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:card="http://schemas.android.com/apk/res-auto"
-        xmlns:fresco="http://schemas.android.com/apk/res-auto">
-    <data>
-        <variable
-            name="teacherItem"
-            type="com.example.qiang_pc.newtalkpal.activity.bean.TeacherBean.DataEntity"/>
-    </data>
-        <android.support.v7.widget.CardView
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/card_margin_horizontal_bottom"
+        android:layout_marginLeft="@dimen/card_margin_horizontal_bottom"
+        android:layout_marginRight="@dimen/card_margin_horizontal_bottom"
+        android:layout_marginTop="@dimen/card_margin_top"
+        android:foreground="?attr/selectableItemBackground"
+        card_view:cardBackgroundColor="#ffffff"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardElevation="3dp"
+        card_view:contentPadding="10dp"
+        >
+
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/card_margin_top"
-            android:layout_marginLeft="@dimen/card_margin_horizontal_bottom"
-            android:layout_marginRight="@dimen/card_margin_horizontal_bottom"
-            android:layout_marginBottom="@dimen/card_margin_horizontal_bottom"
-            android:foreground="?attr/selectableItemBackground"
-            card:cardBackgroundColor="#ffffff"
-            card:contentPadding="10dp"
-            card:cardCornerRadius="5dp"
+            android:orientation="vertical"
             >
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 >
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/iv_teacher"
+                    android:layout_width="180px"
+                    android:layout_height="180px"
+                    fresco:placeholderImage="@mipmap/talkpal_logo"
+                    />
 
                 <com.zhy.autolayout.AutoLinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_height="180px"
+                    android:layout_marginLeft="12px"
+                    android:orientation="vertical"
                     >
 
-                    <com.facebook.drawee.view.SimpleDraweeView
-                        android:id="@+id/iv_teacher"
-                        android:layout_width="180px"
-                        android:layout_height="180px"
-                        fresco:placeholderImage="@mipmap/talkpal_logo"
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/font_black"
+                        android:textSize="@dimen/teacher_textsize_big"
                         />
 
                     <com.zhy.autolayout.AutoLinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="180px"
-                        android:layout_marginLeft="12px"
-                        android:orientation="vertical"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:orientation="horizontal"
                         >
 
                         <TextView
-                            android:id="@+id/tv_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{teacherItem.first_name}"
-                            android:textColor="@color/font_black"
-                            android:textSize="@dimen/teacher_textsize_big"
+                            android:text="from"
+                            android:textColor="@color/font_gray"
+                            android:textSize="@dimen/teacher_textsize_nomarl"
                             />
 
-                        <com.zhy.autolayout.AutoLinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="bottom"
-                            android:orientation="horizontal"
-                            >
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="from"
-                                android:textColor="@color/font_gray"
-                                android:textSize="@dimen/teacher_textsize_nomarl"
-                                />
-
-                            <TextView
-                                android:id="@+id/tv_from"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="17px"
-                                android:singleLine="true"
-                                android:text="@{teacherItem.from}"
-                                android:textColor="@color/font_black"
-                                android:textSize="@dimen/teacher_textsize_nomarl"
-                                />
-                        </com.zhy.autolayout.AutoLinearLayout>
-
-                        <com.zhy.autolayout.AutoLinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="bottom"
-                            android:orientation="horizontal"
-                            >
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="use_language"
-                                android:textColor="@color/font_gray"
-                                android:textSize="@dimen/teacher_textsize_nomarl"
-                                />
-
-                            <TextView
-                                android:id="@+id/tv_languages"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="17px"
-                                android:singleLine="true"
-                                android:text="@{teacherItem.languages}"
-                                android:textColor="@color/font_black"
-                                android:textSize="@dimen/teacher_textsize_nomarl"
-                                />
-                        </com.zhy.autolayout.AutoLinearLayout>
-
-                        <com.zhy.autolayout.AutoLinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="bottom"
-                            android:orientation="horizontal"
-                            >
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="teach_language"
-                                android:textColor="@color/font_gray"
-                                android:textSize="@dimen/teacher_textsize_nomarl"
-                                />
-
-                            <TextView
-                                android:id="@+id/tv_teach"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="17px"
-                                android:singleLine="true"
-                                android:text="@{teacherItem.teach}"
-                                android:textColor="@color/font_black"
-                                android:textSize="@dimen/teacher_textsize_nomarl"
-                                />
-                        </com.zhy.autolayout.AutoLinearLayout>
+                        <TextView
+                            android:id="@+id/tv_from"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17px"
+                            android:singleLine="true"
+                            android:textColor="@color/font_black"
+                            android:textSize="@dimen/teacher_textsize_nomarl"
+                            />
                     </com.zhy.autolayout.AutoLinearLayout>
-                </com.zhy.autolayout.AutoLinearLayout>
-
-                <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
 
                     <com.zhy.autolayout.AutoLinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="170px"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:orientation="vertical"
+                        android:gravity="bottom"
+                        android:orientation="horizontal"
                         >
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="use_language"
+                            android:textColor="@color/font_gray"
+                            android:textSize="@dimen/teacher_textsize_nomarl"
+                            />
 
-                        <com.zhy.autolayout.AutoLinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="bottom"
-                            android:orientation="horizontal"
-                            >
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:drawableLeft="@mipmap/brief_loca"
-                                android:drawablePadding="5dp"
-                                android:text="location_weizhi"
-                                android:textColor="@color/font_gray"
-                                android:textSize="@dimen/teacher_textsize_nomarl"
-                                />
-
-                            <TextView
-                                android:id="@+id/tv_location"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="17px"
-                                android:singleLine="true"
-                                android:text="@{teacherItem.location}"
-                                android:textColor="@color/font_black"
-                                android:textSize="@dimen/teacher_textsize_nomarl"
-                                />
-                        </com.zhy.autolayout.AutoLinearLayout>
-
-                        <com.zhy.autolayout.AutoLinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="bottom"
-                            android:orientation="horizontal"
-                            >
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:drawableLeft="@mipmap/brief_hourly"
-                                android:drawablePadding="5dp"
-                                android:text="price"
-                                android:textColor="@color/font_gray"
-                                android:textSize="@dimen/teacher_textsize_nomarl"
-                                />
-
-                            <TextView
-                                android:id="@+id/tv_price"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="17px"
-                                android:singleLine="true"
-                                android:text="@{teacherItem.price}"
-                                android:textColor="#02C9FC"
-                                android:textSize="@dimen/teacher_textsize_nomarl"
-                                />
-                        </com.zhy.autolayout.AutoLinearLayout>
-
-                        <com.zhy.autolayout.AutoLinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="bottom"
-                            android:orientation="horizontal"
-                            >
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:drawableLeft="@mipmap/brief_expert"
-                                android:drawablePadding="5dp"
-                                android:text="speciality"
-                                android:textColor="@color/font_gray"
-                                android:textSize="@dimen/teacher_textsize_nomarl"
-                                />
-
-                            <TextView
-                                android:id="@+id/tv_expert"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="17px"
-                                android:singleLine="true"
-                                android:text="@{teacherItem.skill}"
-                                android:textColor="@color/font_black"
-                                android:textSize="@dimen/teacher_textsize_nomarl"
-                                />
-                        </com.zhy.autolayout.AutoLinearLayout>
+                        <TextView
+                            android:id="@+id/tv_languages"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17px"
+                            android:singleLine="true"
+                            android:textColor="@color/font_black"
+                            android:textSize="@dimen/teacher_textsize_nomarl"
+                            />
                     </com.zhy.autolayout.AutoLinearLayout>
 
-                    <Button
-                        android:id="@+id/btn_order"
-                        style="?android:textAppearanceSmall"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_gravity="bottom"
-                        android:text="order"
-                        android:background="@drawable/shape_btn_bg"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold"/>
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:orientation="horizontal"
+                        >
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="teach_language"
+                            android:textColor="@color/font_gray"
+                            android:textSize="@dimen/teacher_textsize_nomarl"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_teach"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17px"
+                            android:singleLine="true"
+                            android:textColor="@color/font_black"
+                            android:textSize="@dimen/teacher_textsize_nomarl"
+                            />
+                    </com.zhy.autolayout.AutoLinearLayout>
+                </com.zhy.autolayout.AutoLinearLayout>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="170px"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    >
+
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@mipmap/brief_loca"
+                            android:drawablePadding="5dp"
+                            android:text="location_weizhi"
+                            android:textColor="@color/font_gray"
+                            android:textSize="@dimen/teacher_textsize_nomarl"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17px"
+                            android:singleLine="true"
+                            android:textColor="@color/font_black"
+                            android:textSize="@dimen/teacher_textsize_nomarl"
+                            />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@mipmap/brief_hourly"
+                            android:drawablePadding="5dp"
+                            android:text="price"
+                            android:textColor="@color/font_gray"
+                            android:textSize="@dimen/teacher_textsize_nomarl"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17px"
+                            android:singleLine="true"
+                            android:textColor="#02C9FC"
+                            android:textSize="@dimen/teacher_textsize_nomarl"
+                            />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@mipmap/brief_expert"
+                            android:drawablePadding="5dp"
+                            android:text="speciality"
+                            android:textColor="@color/font_gray"
+                            android:textSize="@dimen/teacher_textsize_nomarl"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_expert"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17px"
+                            android:singleLine="true"
+                            android:textColor="@color/font_black"
+                            android:textSize="@dimen/teacher_textsize_nomarl"
+                            />
+                    </com.zhy.autolayout.AutoLinearLayout>
                 </com.zhy.autolayout.AutoLinearLayout>
 
+                <Button
+                    android:id="@+id/btn_order"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/shape_btn_bg"
+                    android:text="order"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"/>
+
             </com.zhy.autolayout.AutoLinearLayout>
-        </android.support.v7.widget.CardView>
-</layout>
+
+        </com.zhy.autolayout.AutoLinearLayout>
+    </android.support.v7.widget.CardView>
+</com.zhy.autolayout.AutoLinearLayout>
