@@ -33,12 +33,15 @@ public class TeacherFragmentViewmodel {
         this.page = page;
     }
 
+    public boolean isLoading;
+
     public TeacherFragmentViewmodel(Context context, TeacherFragment teacherFragment){
         mContext=context;
         mTeacherFragment=teacherFragment;
     }
 
     public void loadData() {
+        isLoading=true;
         OkHttpUtils
                 .post()
                 .url(Urls.TEACHER_LIST)
@@ -61,11 +64,13 @@ public class TeacherFragmentViewmodel {
         @Override
         public void onError(Call call, Exception e) {
             L.i("数据加载错误");
+            isLoading=false;
             mTeacherFragment.stopWait();
         }
 
         @Override
         public void onResponse(TeacherBean response) {
+            isLoading=false;
             L.i("数据长度："+response.getData().size()+"");
             List<TeacherBean.DataEntity> data = response.getData();
             mTeacherFragment.setAdapter(data);
