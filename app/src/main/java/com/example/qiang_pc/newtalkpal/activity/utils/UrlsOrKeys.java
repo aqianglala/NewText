@@ -1,6 +1,6 @@
 package com.example.qiang_pc.newtalkpal.activity.utils;
 
-public class Urls {
+public class UrlsOrKeys {
 	public static String TEACHER_LIST="http://www.talkpal.cc/teacher/list";
 	public static String LOGIN="http://www.talkpal.cc/signIn";
 	public static String GETCODE="http://www.talkpal.cc/signUp";
