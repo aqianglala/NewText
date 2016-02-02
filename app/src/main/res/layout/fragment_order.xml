@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+     >
+
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:background="@color/bg_all"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+
+
+        <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+            android:id="@+id/rl_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+         <android.support.v7.widget.RecyclerView
+            android:id="@+id/id_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@null"
+            android:listSelector="@android:color/transparent" />
+        </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
+        <TextView
+            android:id="@+id/tv_loginfirst"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/login_first"
+            android:textColor="@color/font_dark_gray"
+            android:textSize="@dimen/big_text" />
+        <TextView
+            android:id="@+id/tv_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/no_order"
+            android:textColor="@color/font_dark_gray"
+            android:visibility="gone"
+            android:textSize="@dimen/big_text" />
+
+    </FrameLayout>
+</com.zhy.autolayout.AutoRelativeLayout>
+</layout>

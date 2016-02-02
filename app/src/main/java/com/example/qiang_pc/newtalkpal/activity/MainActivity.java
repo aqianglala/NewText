@@ -15,10 +15,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.qiang_pc.newtalkpal.R;
-import com.example.qiang_pc.newtalkpal.activity.adapter.TabFragmentAdapter;
-import com.example.qiang_pc.newtalkpal.activity.fragment.OrderListFragment;
-import com.example.qiang_pc.newtalkpal.activity.fragment.TeacherFragment;
-import com.example.qiang_pc.newtalkpal.activity.global.BaseActivity;
+import com.example.qiang_pc.newtalkpal.adapter.TabFragmentAdapter;
+import com.example.qiang_pc.newtalkpal.fragment.OrderListFragment;
+import com.example.qiang_pc.newtalkpal.fragment.TeacherFragment;
+import com.example.qiang_pc.newtalkpal.global.BaseActivity;
 
 import java.util.ArrayList;
 

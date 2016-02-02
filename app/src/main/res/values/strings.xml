@@ -24,4 +24,66 @@
     <string name="be_good_template">做你最信任的外教预约平台</string>
 
     <string name="loading">loading...</string>
+
+    <!-- WXPayEntryActivity -->
+    <string name="pay_result_tip">这个界面用于显示第三方app通过微信支付的结果</string>
+    <string name="pay_result_callback_msg" formatted="false">WeChat payment results：%s</string>
+    <string name="hint_first_bind">For the first time, please bind the phone</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="get_verify_number">Get verification code</string>
+    <string name="verify_number">Verification code</string>
+    <string name="sure">Confirm</string>
+    <string name="login">Login</string>
+    <string name="begin_time">Start time</string>
+    <string name="pick_time">Choose Time</string>
+    <string name="expect_time">Place of expectation</string>
+    <string name="search_from_map">Map search</string>
+    <string name="overall_evaluation">Overall Evaluation</string>
+    <string name="please_fill_comment">Please fill in the evaluation after the class of the
+        teacher...</string>
+    <string name="commit">Commit</string>
+    <string name="appointment_foreign">Appointment of foreign teachers</string>
+    <string name="duration">Duration：</string>
+    <string name="time">Time：</string>
+    <string name="location">Location：</string>
+    <string name="total">Total：</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="wx_pay">WeChat payment</string>
+    <string name="confirm_appointment">Confirm an appointment</string>
+    <string name="from">From</string>
+    <string name="language">Language</string>
+    <string name="teacher_profile">Teacher profile</string>
+    <string name="user_comment">User comments</string>
+    <string name="check_more">See more</string>
+    <string name="click_to_order">Make An Appointment</string>
+    <string name="nickname">Nickname</string>
+    <string name="exit">Logout</string>
+    <string name="please_fill_location">Please enter the address</string>
+    <string name="password">Password</string>
+    <string name="use_wx_login">Use third party login</string>
+    <string name="foreign_teacher">Teacher</string>
+    <string name="order">Appointment</string>
+    <string name="user_center">Personal center</string>
+    <string name="name">Name</string>
+    <string name="register_allow">To register and to read and to agree to</string>
+    <string name="protocol">《Talkpal服务使用协议》</string>
+    <string name="about_us">About us</string>
+    <string name="contact_service">Contact service</string>
+    <string name="user_feedback">User feedback</string>
+    <string name="version">Version</string>
+    <string name="ongoing_order">Recent appointments</string>
+    <string name="finished_order">History appointments</string>
+    <string name="become_teacher">Become talkpal teacher</string>
+    <string name="help">Help</string>
+    <string name="login_first">Login first</string>
+    <string name="no_order">You don\'t have an appointment.</string>
+    <string name="date_time">time：</string>
+    <string name="use_language">Use language</string>
+    <string name="teach_language">Teach language</string>
+    <string name="location_weizhi">location</string>
+    <string name="price">price</string>
+    <string name="speciality">speciality</string>
+    <string name="load_failed_try_again">Load failed, please try again</string>
+    <string name="sex">sex</string>
+    <string name="search">search</string>
 </resources>

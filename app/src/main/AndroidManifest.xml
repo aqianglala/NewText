@@ -9,14 +9,14 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
+        android:name=".global.BaseApplication"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:replace="android:icon"
-        android:name=".activity.global.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
         <meta-data
             android:name="design_width"
             android:value="768">
@@ -39,6 +39,10 @@
         <activity
             android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login">
+        </activity>
+        <activity android:name=".activity.DetailActivity">
+        </activity>
+        <activity android:name=".activity.CommentListActivity">
         </activity>
     </application>
 
