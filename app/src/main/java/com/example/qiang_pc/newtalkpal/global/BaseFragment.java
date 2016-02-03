@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.qiang_pc.newtalkpal.utils.L;
 import com.example.qiang_pc.newtalkpal.utils.ToastUtil;
+import com.zhy.http.okhttp.OkHttpUtils;
 
 
 /**
@@ -53,6 +55,13 @@ public abstract class BaseFragment extends Fragment {
             }
         }
         return mContentView;
+    }
+
+    @Override
+    public void onDestroy() {
+        OkHttpUtils.getInstance().cancelTag(this);
+        L.i(TAG,"关闭请求");
+        super.onDestroy();
     }
 
     protected void setContentView(@LayoutRes int layoutResID) {

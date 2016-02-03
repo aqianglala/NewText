@@ -12,6 +12,7 @@ import com.example.qiang_pc.newtalkpal.adapter.CommentListAdapter;
 import com.example.qiang_pc.newtalkpal.bean.CommentBean;
 import com.example.qiang_pc.newtalkpal.bean.TeacherBean;
 import com.example.qiang_pc.newtalkpal.databinding.ActivityDetailBinding;
+import com.example.qiang_pc.newtalkpal.utils.ArraysUtils;
 import com.example.qiang_pc.newtalkpal.utils.L;
 import com.example.qiang_pc.newtalkpal.utils.ScreenUtils;
 import com.example.qiang_pc.newtalkpal.utils.UrlsOrKeys;
@@ -124,7 +125,7 @@ public class DetailActivityViewmodel {
                 mBinding.llComment.setVisibility(View.VISIBLE);
                 CommentListAdapter adapter = new CommentListAdapter(mDetailActivity, R.layout
                         .item_list_comment);
-                adapter.setDatas(data.size()>=3?getArrays(0,3):data);
+                adapter.setDatas(data.size()>=3? ArraysUtils.getArrays(data,0,3):data);
                 mBinding.idLvfsv.setAdapter(adapter);
                 if(data.size()>=3){//取到3条数据则显示查看更多
                     mBinding.tvShowmore.setVisibility(View.VISIBLE);
@@ -132,14 +133,6 @@ public class DetailActivityViewmodel {
                 }
             }
         }
-    }
-
-    private ArrayList getArrays(int start ,int end){
-        ArrayList<CommentBean.DataEntity> dataEntities = new ArrayList<>();
-        for(int i=start;i<end;i++){
-            dataEntities.add(data.get(i));
-        }
-        return dataEntities;
     }
 
     /**

@@ -33,7 +33,7 @@ public class OrderListFragment extends BaseFragment implements BGARefreshLayout
 
     public boolean isRefresh;
     public boolean mHasMore=true;
-    private OrderRecyclerViewAdapter mAdapter;
+    public OrderRecyclerViewAdapter mAdapter;
     private OrderFragmentViewmodel mViewmodel;
     private FragmentOrderBinding mBinding;
 
@@ -152,6 +152,9 @@ public class OrderListFragment extends BaseFragment implements BGARefreshLayout
     @Subscriber(tag = "update_order_list")
     private void updateUserWithTag(EventMessage message) {
         L.i(TAG,message.getMessage());
+        if(message.getMessage().equals("退出登录")){
+            mViewmodel.token=null;
+        }
         mBinding.rlRefresh.beginRefreshing();
     }
 }

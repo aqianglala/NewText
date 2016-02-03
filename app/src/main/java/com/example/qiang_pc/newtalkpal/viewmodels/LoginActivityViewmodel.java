@@ -36,7 +36,7 @@ public class LoginActivityViewmodel {
     public void login() {
         String phone = mBinding.etPhone.getText().toString().trim();
         String password = mBinding.etPassword.getText().toString().trim();
-        if(validateUser(phone,password)){
+        if(validateUser(phone,password)){//前端验证
             mLoginActivity.showLoadingDialog();
             OkHttpUtils
                     .post()
@@ -46,16 +46,29 @@ public class LoginActivityViewmodel {
                     .tag(mLoginActivity)
                     .build()
                     .execute(new MyCallback());
-        }else{
-            mLoginActivity.showToast("用户名或密码不能为空");
         }
     }
 
     private boolean validateUser(String phone, String password) {
-        if(TextUtils.isEmpty(phone) || TextUtils.isEmpty(password)){
-            return false;
+        boolean isAccessPhone=false;
+        boolean isAccessPass=false;
+        if(TextUtils.isEmpty(phone)){
+            mBinding.tilPhone.setErrorEnabled(true);
+            mBinding.tilPhone.setError("手机号不能为空");
+            isAccessPhone = false;
+        }else{
+            mBinding.tilPhone.setErrorEnabled(false);
+            isAccessPhone=true;
         }
-        return true;
+        if(TextUtils.isEmpty(password)){
+            mBinding.tilPassword.setErrorEnabled(true);
+            mBinding.tilPassword.setError("密码不能为空");
+            isAccessPass = false;
+        }else{
+            mBinding.tilPassword.setErrorEnabled(false);
+            isAccessPass = true;
+        }
+        return isAccessPhone & isAccessPass;
     }
 
     private class MyCallback extends Callback<LoginBean> {
@@ -76,9 +89,9 @@ public class LoginActivityViewmodel {
         @Override
         public void onResponse(LoginBean response) {
             mLoginActivity.dismissLoadingDialog();
-            L.i(mLoginActivity.TAG,"token："+response.getData().getToken());
             //验证是否登录成功
             if(response.getCode()==0){//登录成功
+                L.i(mLoginActivity.TAG,"token："+response.getData().getToken());
 
                 try {
                     SPUtils.put(mLoginActivity,UrlsOrKeys.TOKEN,AESUtils.encrypt(UrlsOrKeys.seed,
@@ -99,7 +112,14 @@ public class LoginActivityViewmodel {
                     e.printStackTrace();
                 }
             }else {//登录失败
-                mLoginActivity.showToast("登录失败");
+                String error = response.getError();
+                if(error.contains("手机")){
+                    mBinding.tilPhone.setErrorEnabled(true);
+                    mBinding.tilPhone.setError("手机号错误");
+                }else if(error.contains("密码")){
+                    mBinding.tilPassword.setErrorEnabled(true);
+                    mBinding.tilPassword.setError("密码错误");
+                }
             }
         }
     }

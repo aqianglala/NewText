@@ -1,6 +1,7 @@
 package com.example.qiang_pc.newtalkpal.activity;
 
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -27,9 +28,17 @@ public class CommentListActivity extends BaseActivity implements BGARefreshLayou
     private RecyclerView mDataRv;
 
     private CommentListActivityViewmodel mViewmodel;
+
+    private android.os.Handler handler=new android.os.Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            stopWait();
+        }
+    };
     @Override
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_comment);
+        mViewmodel=new CommentListActivityViewmodel(this);
         mRefreshLayout=getViewById(R.id.rl_refresh);
         mDataRv=getViewById(R.id.id_recyclerView);
         initRefreshViewHolder();
@@ -41,7 +50,7 @@ public class CommentListActivity extends BaseActivity implements BGARefreshLayou
 
     @Override
     protected void setListener() {
-
+        mRefreshLayout.setDelegate(this);
     }
 
     @Override
@@ -68,11 +77,11 @@ public class CommentListActivity extends BaseActivity implements BGARefreshLayou
         }else{
             mAdapter.addMoreDatas(data);
         }
-
-        stopWait();
+        handler.sendEmptyMessageDelayed(1,1000);
     }
 
     public void stopWait(){
+        mViewmodel.isLoading=false;
         mRefreshLayout.endRefreshing();
         mRefreshLayout.endLoadingMore();
     }
@@ -91,9 +100,19 @@ public class CommentListActivity extends BaseActivity implements BGARefreshLayou
     @Override
     public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
         if(!mViewmodel.isLoading) {
+            if(!mViewmodel.hasMore){
+                showToast("没有更多数据了");
+                return false;
+            }
             isRefresh = false;
             mViewmodel.setPage(mViewmodel.getPage() + 1);
-            mViewmodel.loadComment();
+            new Thread(){
+                @Override
+                public void run() {
+                    super.run();
+                    mViewmodel.loadComment();
+                }
+            }.start();
         }
         return true;
     }

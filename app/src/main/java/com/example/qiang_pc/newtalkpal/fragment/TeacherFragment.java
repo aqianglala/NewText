@@ -70,6 +70,7 @@ public class TeacherFragment extends BaseFragment implements BGARefreshLayout
     }
 
     public boolean isRefresh;
+    public boolean mHasMore=true;
     public void setAdapter(List<TeacherBean.DataEntity> data) {
         if(isRefresh){
             mAdapter.clear();
@@ -77,6 +78,11 @@ public class TeacherFragment extends BaseFragment implements BGARefreshLayout
 //            mAdapter.addNewDatas(data);
             mAdapter.addMoreDatas(data);
         }else{
+            if(data.size()==10){
+                mHasMore=true;
+            }else{
+                mHasMore=false;
+            }
             mAdapter.addMoreDatas(data);
         }
 
@@ -102,9 +108,15 @@ public class TeacherFragment extends BaseFragment implements BGARefreshLayout
     @Override
     public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
         if(!mViewmodel.isLoading) {
-            isRefresh = false;
-            mViewmodel.setPage(mViewmodel.getPage() + 1);
-            mViewmodel.loadData();
+            if(mHasMore){
+                isRefresh = false;
+                mViewmodel.setPage(mViewmodel.getPage() + 1);
+                mViewmodel.loadData();
+                return true;
+            }else{
+                showToast("没有更多数据了");
+                return false;
+            }
         }
         return true;
     }

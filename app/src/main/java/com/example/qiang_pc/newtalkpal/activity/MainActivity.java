@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -11,14 +12,21 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.example.qiang_pc.newtalkpal.R;
 import com.example.qiang_pc.newtalkpal.adapter.TabFragmentAdapter;
+import com.example.qiang_pc.newtalkpal.bean.EventMessage;
 import com.example.qiang_pc.newtalkpal.fragment.OrderListFragment;
 import com.example.qiang_pc.newtalkpal.fragment.TeacherFragment;
 import com.example.qiang_pc.newtalkpal.global.BaseActivity;
+import com.example.qiang_pc.newtalkpal.utils.AESUtils;
+import com.example.qiang_pc.newtalkpal.utils.SPUtils;
+import com.example.qiang_pc.newtalkpal.utils.UrlsOrKeys;
+
+import org.simple.eventbus.EventBus;
 
 import java.util.ArrayList;
 
@@ -31,34 +39,6 @@ public class MainActivity extends BaseActivity
     private FloatingActionButton fab;
     private NavigationView navigationView;
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-////                        .setAction("Action", null).show();
-//                startActivity(new Intent(MainActivity.this,LoginActivity.class));
-//            }
-//        });
-//
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.setDrawerListener(toggle);
-//        toggle.syncState();
-//
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(this);
-//
-//        initTabLayout();
-//    }
 
     @Override
     protected void initView(Bundle savedInstanceState) {
@@ -82,9 +62,20 @@ public class MainActivity extends BaseActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                if(hasLogined()){
+                    Snackbar.make(view, "您已登录，是否注销？", Snackbar.LENGTH_LONG)
+                            .setAction("SIGN OUT", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    SPUtils.clear(MainActivity.this);
+                                    EventBus.getDefault().post(new EventMessage("退出登录"),
+                                            "update_order_list");
+                                    showToast("退出成功~");
+                                }
+                            }).show();
+                }else{
+                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                }
             }
         });
         navigationView.setNavigationItemSelectedListener(this);
@@ -114,6 +105,26 @@ public class MainActivity extends BaseActivity
         mViewPage.setAdapter(tabFragmentAdapter);
         mTabLayout.setupWithViewPager(mViewPage);
         mTabLayout.setTabsFromPagerAdapter(tabFragmentAdapter);
+    }
+
+    private String token;
+    private boolean hasLogined() {
+        token = getToken();
+        if(TextUtils.isEmpty(token)){
+            return false;
+        }
+        return true;
+    }
+
+    private String getToken(){
+        String token =null;
+        try {
+            token = AESUtils.decrypt(UrlsOrKeys.seed, (String) SPUtils.get(this,
+                    UrlsOrKeys.TOKEN, ""));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return token;
     }
 
     @Override

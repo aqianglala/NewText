@@ -2,11 +2,15 @@ package com.example.qiang_pc.newtalkpal.global;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.qiang_pc.newtalkpal.R;
+import com.example.qiang_pc.newtalkpal.utils.L;
 import com.example.qiang_pc.newtalkpal.utils.ToastUtil;
+import com.zhy.http.okhttp.OkHttpUtils;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -25,9 +29,24 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         TAG = this.getClass().getSimpleName();
         mApp = BaseApplication.getInstance();
+
+
         initView(savedInstanceState);
+        if(!TAG.equals("MainActivity")){
+            ActionBar actionBar = getSupportActionBar();
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         setListener();
         processLogic(savedInstanceState);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==android.R.id.home){
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -86,4 +105,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        OkHttpUtils.getInstance().cancelTag(this);
+        L.i(TAG,"关闭请求");
+        super.onDestroy();
+    }
 }

@@ -2,7 +2,6 @@ package com.example.qiang_pc.newtalkpal.activity;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.view.View;
 
 import com.example.qiang_pc.newtalkpal.R;
@@ -23,8 +22,6 @@ public class LoginActivity extends BaseActivity {
 
         viewmodel = new LoginActivityViewmodel(this, binding);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -44,5 +41,7 @@ public class LoginActivity extends BaseActivity {
     public void login(View view){
         viewmodel.login();
     }
+
+
 }
 

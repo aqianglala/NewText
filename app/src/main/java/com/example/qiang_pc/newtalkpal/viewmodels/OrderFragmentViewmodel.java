@@ -31,7 +31,7 @@ public class OrderFragmentViewmodel {
     private FragmentOrderBinding mBinding;
 
     private int page = 1;// 默认加载第一页
-    private String token;
+    public String token;
 
     public int getPage() {
         return page;
@@ -64,7 +64,9 @@ public class OrderFragmentViewmodel {
                     .build()
                     .execute(new MyCallback());
         }else{
+            mOrderListFragment.mAdapter.clear();
             mBinding.tvLoginfirst.setVisibility(View.VISIBLE);
+            mOrderListFragment.stopWait();
         }
     }
 
