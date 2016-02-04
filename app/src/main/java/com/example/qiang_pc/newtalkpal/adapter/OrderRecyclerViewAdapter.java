@@ -2,6 +2,7 @@ package com.example.qiang_pc.newtalkpal.adapter;
 
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 
 import com.example.qiang_pc.newtalkpal.R;
 import com.example.qiang_pc.newtalkpal.bean.Appointments;
@@ -35,9 +36,13 @@ public class OrderRecyclerViewAdapter extends BGARecyclerViewAdapter<Appointment
                 .tv_location,model.getPlace()).setText(R.id.tv_time,time);
         //设置图片
         String src = model.getTeacher_headImg();
-        Uri uri = Uri.parse(src);
         SimpleDraweeView draweeView = viewHolderHelper.getView(R.id.iv_teacher);
-        draweeView.setImageURI(uri);
+        if(!TextUtils.isEmpty(src)){
+            Uri uri = Uri.parse(src);
+            draweeView.setImageURI(uri);
+        }else{
+            draweeView.setImageURI(null);
+        }
 
 
     }

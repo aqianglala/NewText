@@ -152,7 +152,7 @@ public class DetailActivityViewmodel {
 
             @Override
             public void onItemClick(int position) {
-                mDetailActivity.showToast("点击了");
+//                mDetailActivity.showToast("点击了");
             }
         });
     }

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:paddingTop="15dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="10dp"
+    android:orientation="vertical"
+	>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/profile_image"
+            xmlns:fresco="http://schemas.android.com/apk/res-auto"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+			fresco:placeholderImage="@mipmap/default_avatar"
+			fresco:roundAsCircle="true"/>
+		<View 
+		    android:layout_width="0dp"
+		    android:layout_weight="1"
+		    android:layout_height="0dp"
+		    />
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			>
+			<TextView
+				android:id="@+id/tv_state"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="@dimen/nomal_text"
+				android:layout_gravity="right"
+				android:text="已付款"
+				/>
+			<TextView
+				android:id="@+id/tv_teacher_name"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="@dimen/big_text"
+				android:text="Luwam"
+				android:textColor="@color/font_black"/>
+
+		</LinearLayout>
+
+        
+    </LinearLayout>
+
+	<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp" 
+        android:orientation="horizontal">
+
+		<TextView
+		    android:layout_width="0dp"
+		    android:layout_weight="1"
+		    android:layout_height="wrap_content"
+		    android:textColor="@color/font_dark_gray"
+		    android:text="@string/date_time"
+			android:textSize="@dimen/nomal_text"
+			/>
+
+		<TextView
+		    android:id="@+id/tv_time"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    style="@style/Text_nomarl_black"
+		    android:text="12月15日 上午10:00" />
+        
+    </LinearLayout>
+
+</LinearLayout>

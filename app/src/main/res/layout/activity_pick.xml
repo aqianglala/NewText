@@ -1,0 +1,191 @@
+<layout>
+    <com.zhy.autolayout.AutoRelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_all"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/rl_teacher_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30px"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/profile_image"
+                xmlns:fresco="http://schemas.android.com/apk/res-auto"
+                android:layout_width="125px"
+                android:layout_height="125px"
+                android:layout_margin="30px"
+                fresco:placeholderImage="@mipmap/default_avatar"
+                fresco:roundAsCircle="true"
+                />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20px"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    style="@style/Text_big_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Carolyn"/>
+
+                <RatingBar
+                    android:id="@+id/rb_star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40px"
+                    android:layout_marginTop="12px"
+                    android:isIndicator="true"
+                    android:progressDrawable="@drawable/custom_ratingbar"
+                    android:rating="5"
+                    />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <TextView
+                android:id="@+id/tv_money"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="13dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="¥ 125/小时"
+                android:textColor="@color/font_blue"
+                android:textSize="@dimen/big_text"/>
+
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_teacher_detail"
+            android:layout_marginTop="30px"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:paddingBottom="20px"
+            android:paddingLeft="30px"
+            android:paddingRight="12px"
+            android:paddingTop="20px"
+            >
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90px"
+                android:orientation="horizontal"
+                >
+
+                <EditText
+                    android:id="@+id/et_picktime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/begin_time"
+                    android:padding="20px"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_picktime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12px"
+                    android:layout_marginRight="12px"
+                    android:clickable="true"
+                    android:text="@string/pick_time"
+                    android:textColor="@color/font_blue"
+                    android:textSize="18sp"
+                    />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/order_duration"
+                    android:textSize="18sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1小时"
+                    android:textSize="18sp"
+                    />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90px"
+                android:orientation="horizontal"
+                >
+
+                <EditText
+                    android:id="@+id/et_location"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/expect_time"
+                    android:padding="20px"
+                    android:singleLine="true"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_searchmap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12px"
+                    android:layout_marginRight="12px"
+                    android:clickable="true"
+                    android:text="@string/search_from_map"
+                    android:textColor="@color/font_blue"
+                    android:textSize="18sp"
+                    />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+
+        <View
+            android:id="@+id/vMasker"
+            android:layout_width="match_parent"
+            android:layout_height="500px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40px"
+            android:layout_marginRight="40px"
+            android:background="#e0000000"
+            android:visibility="gone"/>
+
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/blue_btn"
+            android:padding="30px"
+            android:text="下一步"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/big_text"/>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+</layout>

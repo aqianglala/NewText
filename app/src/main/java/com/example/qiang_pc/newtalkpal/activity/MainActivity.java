@@ -22,9 +22,8 @@ import com.example.qiang_pc.newtalkpal.bean.EventMessage;
 import com.example.qiang_pc.newtalkpal.fragment.OrderListFragment;
 import com.example.qiang_pc.newtalkpal.fragment.TeacherFragment;
 import com.example.qiang_pc.newtalkpal.global.BaseActivity;
-import com.example.qiang_pc.newtalkpal.utils.AESUtils;
+import com.example.qiang_pc.newtalkpal.utils.HasLoginUtils;
 import com.example.qiang_pc.newtalkpal.utils.SPUtils;
-import com.example.qiang_pc.newtalkpal.utils.UrlsOrKeys;
 
 import org.simple.eventbus.EventBus;
 
@@ -62,7 +61,7 @@ public class MainActivity extends BaseActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(hasLogined()){
+                if(!TextUtils.isEmpty(HasLoginUtils.getToken())){
                     Snackbar.make(view, "您已登录，是否注销？", Snackbar.LENGTH_LONG)
                             .setAction("SIGN OUT", new View.OnClickListener() {
                                 @Override
@@ -107,26 +106,6 @@ public class MainActivity extends BaseActivity
         mTabLayout.setTabsFromPagerAdapter(tabFragmentAdapter);
     }
 
-    private String token;
-    private boolean hasLogined() {
-        token = getToken();
-        if(TextUtils.isEmpty(token)){
-            return false;
-        }
-        return true;
-    }
-
-    private String getToken(){
-        String token =null;
-        try {
-            token = AESUtils.decrypt(UrlsOrKeys.seed, (String) SPUtils.get(this,
-                    UrlsOrKeys.TOKEN, ""));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return token;
-    }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -144,10 +123,17 @@ public class MainActivity extends BaseActivity
 
         if (id == R.id.nav_ongoing) {
             // Handle the camera action
+            mViewPage.setCurrentItem(1);
         } else if (id == R.id.nav_finished_appointment) {
+            //判断是否已经登录，没有则跳转到登录页面，有则跳转到已结束订单页面
+            if(!TextUtils.isEmpty(HasLoginUtils.getToken())){
+                gotoActivity(DoneOrderActivity.class);
+            }else{
+                gotoActivity(LoginActivity.class);
+            }
 
         } else if (id == R.id.nav_beome_teacher) {
-
+            gotoActivity(BecomeTeacherActivity.class);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_about_us) {
@@ -161,5 +147,9 @@ public class MainActivity extends BaseActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void gotoActivity(Class clazz){
+        startActivity(new Intent(this,clazz));
     }
 }

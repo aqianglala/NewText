@@ -40,9 +40,27 @@
             android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login">
         </activity>
-        <activity android:name=".activity.DetailActivity">
+        <activity
+            android:name=".activity.DetailActivity"
+            android:label="@string/title_activity_detail">
         </activity>
-        <activity android:name=".activity.CommentListActivity">
+        <activity
+            android:name=".activity.CommentListActivity"
+            android:label="@string/title_activity_comment_list">
+        </activity>
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:label="@string/title_activity_register">
+        </activity>
+        <activity
+            android:name=".activity.DoneOrderActivity"
+            android:label="@string/title_activity_done_order">
+        </activity>
+        <activity
+            android:name=".activity.BecomeTeacherActivity"
+            android:label="@string/title_activity_become_teacher">
+        </activity>
+        <activity android:name=".activity.ChooseActivity">
         </activity>
     </application>
 

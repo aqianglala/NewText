@@ -62,4 +62,29 @@ public class DateUtils {
         return format.format(datess);
     }
 
+    /**
+     * 得到系统当前日期的前或者后几天
+     *
+     * @param iDate
+     *                如果要获得前几天日期，该参数为负数； 如果要获得后几天日期，该参数为正数
+     * @see java.util.Calendar#add(int, int)
+     * @return Date 返回系统当前日期的前或者后几天
+     */
+    public static Date getDateBeforeOrAfter(int iDate) {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_MONTH, iDate);
+        return cal.getTime();
+    }
+
+    /**
+     * 将Date转换为"yyyy.MM.dd"
+     * @param date
+     * @return
+     */
+    public static String formatDate(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+        return sdf.format(date);
+    }
+
+
 }

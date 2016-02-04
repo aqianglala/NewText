@@ -19,4 +19,14 @@
         <item name="android:textColor">@color/font_black</item>
     </style>
 
+    <style name="Text_big_black" >
+        <item name="android:textSize">@dimen/big_text</item>
+        <item name="android:textColor">@color/font_black</item>
+    </style>
+
+    <style name="Text_nomarl_gray" >
+        <item name="android:textSize">@dimen/teacher_textsize_nomarl</item>
+        <item name="android:textColor">@color/font_dark_gray</item>
+    </style>
+
 </resources>

@@ -2,6 +2,7 @@ package com.example.qiang_pc.newtalkpal.adapter;
 
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 
 import com.example.qiang_pc.newtalkpal.R;
 import com.example.qiang_pc.newtalkpal.bean.TeacherBean;
@@ -34,9 +35,13 @@ public class TeacherRecyclerViewAdapter extends BGARecyclerViewAdapter<TeacherBe
                 +"/小时").setText(R.id.tv_expert,model.getSkill());
         //设置图片
         String src = model.getGallery().get(0).getSrc();
-        Uri uri = Uri.parse(src);
         SimpleDraweeView draweeView = viewHolderHelper.getView(R.id.iv_teacher);
-        draweeView.setImageURI(uri);
+        if(!TextUtils.isEmpty(src)){
+            Uri uri = Uri.parse(src);
+            draweeView.setImageURI(uri);
+        }else{
+            draweeView.setImageURI(null);
+        }
 
 
     }

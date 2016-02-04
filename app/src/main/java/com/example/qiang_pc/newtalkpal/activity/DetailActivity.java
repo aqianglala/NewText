@@ -40,7 +40,9 @@ public class DetailActivity extends BaseActivity {
             intent.putExtra("COMMENTLIST",mViewmodel.getData());
             startActivity(intent);
         }else if(v.getId()==R.id.btn_order){
-            showToast("点击了");
+            Intent intent = new Intent(this, ChooseActivity.class);
+            intent.putExtra("COMMENTLIST",mViewmodel.getData());
+            startActivity(intent);
         }
     }
 }

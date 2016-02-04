@@ -1,15 +1,22 @@
 <resources>
-    <string name="app_name">NewTalkPal</string>
+    <string name="app_name">talkPal</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_detail">Detail</string>
+    <string name="title_activity_comment_list">Comment List</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_become_teacher">Become Teacher</string>
+    <string name="title_activity_done_order">Done Order</string>
 
     <!-- Strings related to login -->
     <string name="Phone_number">Phone number</string>
     <string name="prompt_password">Password</string>
+    <string name="prompt_verification">Verification Code</string>
+    <string name="prompt_name">Name</string>
     <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
@@ -20,6 +27,7 @@
         completions."
     </string>
     <string name="register">register</string>
+    <string name="getCode">getCode</string>
     <string name="chinese_name">脱口派</string>
     <string name="be_good_template">做你最信任的外教预约平台</string>
 
@@ -36,6 +44,7 @@
     <string name="login">Login</string>
     <string name="begin_time">Start time</string>
     <string name="pick_time">Choose Time</string>
+    <string name="order_duration">Duration：</string>
     <string name="expect_time">Place of expectation</string>
     <string name="search_from_map">Map search</string>
     <string name="overall_evaluation">Overall Evaluation</string>
@@ -50,6 +59,7 @@
     <string name="payment_method">Payment Method</string>
     <string name="wx_pay">WeChat payment</string>
     <string name="confirm_appointment">Confirm an appointment</string>
+    <string name="confirm">Confirm</string>
     <string name="from">From</string>
     <string name="language">Language</string>
     <string name="teacher_profile">Teacher profile</string>

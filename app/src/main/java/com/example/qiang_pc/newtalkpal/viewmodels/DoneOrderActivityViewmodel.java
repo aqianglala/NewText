@@ -1,12 +1,11 @@
 package com.example.qiang_pc.newtalkpal.viewmodels;
 
-import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.example.qiang_pc.newtalkpal.activity.DoneOrderActivity;
 import com.example.qiang_pc.newtalkpal.bean.Appointments;
 import com.example.qiang_pc.newtalkpal.databinding.FragmentOrderBinding;
-import com.example.qiang_pc.newtalkpal.fragment.OrderListFragment;
 import com.example.qiang_pc.newtalkpal.utils.HasLoginUtils;
 import com.example.qiang_pc.newtalkpal.utils.L;
 import com.example.qiang_pc.newtalkpal.utils.UrlsOrKeys;
@@ -23,10 +22,9 @@ import okhttp3.Response;
 /**
  * Created by admin on 2016/1/26.
  */
-public class OrderFragmentViewmodel {
+public class DoneOrderActivityViewmodel {
 
-    private Context mContext;
-    private OrderListFragment mOrderListFragment;
+    private DoneOrderActivity mDoneOrderActivity;
     private FragmentOrderBinding mBinding;
 
     private int page = 1;// 默认加载第一页
@@ -42,9 +40,9 @@ public class OrderFragmentViewmodel {
 
     public boolean isLoading;
 
-    public OrderFragmentViewmodel(OrderListFragment orderListFragment,FragmentOrderBinding binding){
-        mOrderListFragment=orderListFragment;
-        mContext=mOrderListFragment.getActivity();
+    public DoneOrderActivityViewmodel(DoneOrderActivity doneOrderActivity, FragmentOrderBinding
+            binding){
+        mDoneOrderActivity=doneOrderActivity;
         mBinding=binding;
     }
 
@@ -57,16 +55,16 @@ public class OrderFragmentViewmodel {
                     .post()
                     .url(UrlsOrKeys.GETORDER)
                     .addParams("token", URLEncoder.encode(token))
-                    .addParams("done",URLEncoder.encode("0"))
+                    .addParams("done",URLEncoder.encode("1"))
                     .addParams("page", URLEncoder.encode(page + ""))
                     .addParams("size", URLEncoder.encode("10"))
-                    .tag(mOrderListFragment)
+                    .tag(mDoneOrderActivity)
                     .build()
                     .execute(new MyCallback());
         }else{
-            mOrderListFragment.mAdapter.clear();
+            mDoneOrderActivity.mAdapter.clear();
             mBinding.tvLoginfirst.setVisibility(View.VISIBLE);
-            mOrderListFragment.stopWait();
+            mDoneOrderActivity.stopWait();
         }
     }
 
@@ -83,15 +81,15 @@ public class OrderFragmentViewmodel {
         public void onError(Call call, Exception e) {
             L.i("数据加载错误");
             isLoading=false;
-            mOrderListFragment.stopWait();
+            mDoneOrderActivity.stopWait();
         }
 
         @Override
         public void onResponse(Appointments response) {
             isLoading=false;
-            L.i(mOrderListFragment.TAG,"数据长度："+response.getData().size()+"");
+            L.i(mDoneOrderActivity.TAG,"数据长度："+response.getData().size()+"");
             List<Appointments.DataEntity> data = response.getData();
-            mOrderListFragment.setAdapter(data);
+            mDoneOrderActivity.setAdapter(data);
         }
     }
 }
