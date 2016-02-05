@@ -21,14 +21,6 @@ public class PickActivityViewmodel {
         mBinding=binding;
     }
 
-    public void next() {
-        String time = mBinding.etPicktime.getText().toString().trim();
-        String location = mBinding.etLocation.getText().toString().trim();
-        if(validateUser(time,location)){//前端验证
-
-        }
-    }
-
     private boolean validateUser(String time, String location) {
         if(TextUtils.isEmpty(time) || TextUtils.isEmpty(location)){
             return false;
@@ -36,11 +28,29 @@ public class PickActivityViewmodel {
         return true;
     }
 
+    public void next(){
+        String date = mBinding.etPickdate.getText().toString().trim();
+        String time = mBinding.etPicktime.getText().toString().trim();
+        String location = mBinding.etLocation.getText().toString().trim();
+        if(TextUtils.isEmpty(date)){
+            mActivity.showToast("请选择日期");
+            return ;
+        }
+        if(TextUtils.isEmpty(time)){
+            mActivity.showToast("请选择时间");
+            return ;
+        }
+        if(TextUtils.isEmpty(location)){
+            mActivity.showToast("请选择地点");
+            return ;
+        }
+    }
+
     private ArrayList<Date> mDateList=new ArrayList<>();
     private ArrayList<String>mDateStrList=new ArrayList<>();
     private ArrayList<String>mDuration=new ArrayList<>();
     private ArrayList<String>mTime=new ArrayList<>();
-    private int i=9;
+    private int hour=9;
     public void initTime(){
         for(int i=0;i<10;i++){
             Date date = DateUtils.getDateBeforeOrAfter(i);
@@ -50,16 +60,19 @@ public class PickActivityViewmodel {
         for(int i=1;i<=3;i++){
             mDuration.add(i+"小时");
         }
-        while(i<=19){
+        for(int i=0;i<17;i++){
             String time=null;
-            if(i%2==0){//整除 :30
-                time=i+":30";
-            }else{//余1，:00,hour++
-                if(i==9){
+            if(i%2==0){//整除，:00,hour++
+                hour++;
+                time=hour+":00";
+
+            }else{//余1 :30
+                if(i==0){
                     time="09:00";
+                }else if(i==1){
+                    time="09:30";
                 }else{
-                    i++;
-                    time=i+":00";
+                    time=hour+":30";
                 }
             }
             mTime.add(time);

@@ -63,7 +63,7 @@
                 android:layout_weight="1"
                 android:gravity="right"
                 android:text="¥ 125/小时"
-                android:textColor="@color/font_blue"
+                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/big_text"/>
 
 
@@ -89,6 +89,34 @@
                 >
 
                 <EditText
+                    android:id="@+id/et_pickdate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/begin_time"
+                    android:padding="20px"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_pickdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12px"
+                    android:layout_marginRight="12px"
+                    android:clickable="true"
+                    android:text="@string/pick_date"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90px"
+                android:orientation="horizontal"
+                >
+
+                <EditText
                     android:id="@+id/et_picktime"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -105,33 +133,47 @@
                     android:layout_marginRight="12px"
                     android:clickable="true"
                     android:text="@string/pick_time"
-                    android:textColor="@color/font_blue"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
                     />
             </com.zhy.autolayout.AutoLinearLayout>
 
-            <com.zhy.autolayout.AutoLinearLayout
+            <RadioGroup
+                android:id="@+id/id_radiogroup"
                 android:layout_width="match_parent"
                 android:layout_height="90px"
                 android:gravity="center_vertical"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <RadioButton
+                    android:id="@+id/rb_1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/order_duration"
-                    android:textSize="18sp"
-                    />
-
-                <TextView
-                    android:id="@+id/tv_duration"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:text="1小时"
-                    android:textSize="18sp"
-                    />
-            </com.zhy.autolayout.AutoLinearLayout>
+                    android:textSize="18sp"/>
+
+                <RadioButton
+                    android:id="@+id/rb_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="2小时"
+                    android:textSize="18sp"/>
+
+                <RadioButton
+                    android:id="@+id/rb_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="3小时"
+                    android:textSize="18sp"/>
+
+
+            </RadioGroup>
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
@@ -157,7 +199,7 @@
                     android:layout_marginRight="12px"
                     android:clickable="true"
                     android:text="@string/search_from_map"
-                    android:textColor="@color/font_blue"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
                     />
             </com.zhy.autolayout.AutoLinearLayout>
@@ -181,8 +223,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/blue_btn"
-            android:padding="30px"
+            android:background="@color/colorPrimary"
+            android:padding="12dp"
             android:text="下一步"
             android:textColor="#ffffff"
             android:textSize="@dimen/big_text"/>

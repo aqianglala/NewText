@@ -8,6 +8,15 @@
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
     <application
         android:name=".global.BaseApplication"
         xmlns:tools="http://schemas.android.com/tools"
@@ -17,6 +26,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="xja4p7der1CByO44OdW2QKkV" />
+
         <meta-data
             android:name="design_width"
             android:value="768">
@@ -60,7 +74,13 @@
             android:name=".activity.BecomeTeacherActivity"
             android:label="@string/title_activity_become_teacher">
         </activity>
-        <activity android:name=".activity.ChooseActivity">
+        <activity
+            android:name=".activity.ChooseActivity"
+            android:label="@string/title_activity_choose">
+        </activity>
+        <activity
+            android:name=".activity.LocationActivity"
+            android:label="@string/title_activity_Location">
         </activity>
     </application>
 

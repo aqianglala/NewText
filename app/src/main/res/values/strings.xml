@@ -9,7 +9,9 @@
     <string name="title_activity_detail">Detail</string>
     <string name="title_activity_comment_list">Comment List</string>
     <string name="title_activity_register">Register</string>
+    <string name="title_activity_choose">Choose</string>
     <string name="title_activity_become_teacher">Become Teacher</string>
+    <string name="title_activity_Location">Location</string>
     <string name="title_activity_done_order">Done Order</string>
 
     <!-- Strings related to login -->
@@ -44,6 +46,7 @@
     <string name="login">Login</string>
     <string name="begin_time">Start time</string>
     <string name="pick_time">Choose Time</string>
+    <string name="pick_date">Choose Date</string>
     <string name="order_duration">Duration：</string>
     <string name="expect_time">Place of expectation</string>
     <string name="search_from_map">Map search</string>
